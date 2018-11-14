@@ -1,0 +1,22 @@
+service: test
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+#  stage: dev
+  region: eu-west-1
+  apiKeys:
+    - michaelskey
+
+custom:
+  enabled:
+    preprod: false
+    prod: true
+
+functions:
+  test:
+    handler: api/fodselsdag.handler
+    events:
+    - http:
+        path: /
+        method: get
